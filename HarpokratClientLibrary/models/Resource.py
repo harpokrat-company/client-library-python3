@@ -12,8 +12,8 @@ from HarpokratClientLibrary.models.domain.User import User
 
 
 class Resource(ResourceIdentifier):
-    def __init__(self, attributes=None, resource_type: str = None, relationships=None):
-        super().__init__(resource_type)
+    def __init__(self, attributes=None, resource_type: str = None, relationships=None, id=None):
+        super().__init__(resource_type, id)
         self.attributes = attributes
         self.relationships = relationships
 

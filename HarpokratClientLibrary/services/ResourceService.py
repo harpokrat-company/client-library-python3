@@ -33,7 +33,7 @@ class ResourceService:
         return HarpokratResponse.construct_from(response)
 
     def update(self, resource_id, attributes, relationships=None) -> HarpokratResponse:
-        resource = Resource(attributes, self.resource_type, relationships)
+        resource = Resource(attributes, self.resource_type, relationships, resource_id)
         response = self.api.patch(self._build_url(resource_id), data={'data': resource})
         return HarpokratResponse.construct_from(response)
 
