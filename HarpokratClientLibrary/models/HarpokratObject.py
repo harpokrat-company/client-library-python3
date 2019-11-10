@@ -3,27 +3,25 @@
 import six
 
 
-def convert_to_harpokrat_object(name, data, types=None, special_types=None, plural_dicts_types=None):
+def _build_harpokrat_object(obj_class, data):
+    if isinstance(data, list):
+        return [_build_harpokrat_object(obj_class, x) for x in data]
+    obj = obj_class
+    return obj.construct_from(data)
+
+
+def convert_to_harpokrat_object(name, data, types=None, plural_dicts_types=None):
     if types is None:
         types = {}
-    if special_types is None:
-        special_types = {}
     if plural_dicts_types is None:
         plural_dicts_types = {}
 
     if isinstance(data, list):
-        return [convert_to_harpokrat_object(name, x) for x in data]
-
+        return [convert_to_harpokrat_object(name, x, types=types, plural_dicts_types=plural_dicts_types) for x in data]
     if name in plural_dicts_types:
-        return {key: convert_to_harpokrat_object(plural_dicts_types.get(name), data[key]) for key in data}
-
-    if name in special_types:
-        obj = special_types.get(name)
-        return obj.construct_from(data)
-
+        return {key: _build_harpokrat_object(plural_dicts_types.get(name), data[key]) for key in data}
     if isinstance(data, dict) and name in types:
-        obj = types.get(name)
-        return obj.construct_from(data)
+        return _build_harpokrat_object(types.get(name), data)
 
     return data
 

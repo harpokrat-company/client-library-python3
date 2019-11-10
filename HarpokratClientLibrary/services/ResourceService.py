@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+
 from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
 from HarpokratClientLibrary.models.Resource import Resource
 from HarpokratClientLibrary.services import ApiService
@@ -18,16 +19,21 @@ class ResourceService:
             url = url[1:]
         return url + '/' + path
 
-    def read(self, resource_id):
-        return self.api.get(self._build_url(resource_id))
+    def read(self, resource_id: str) -> HarpokratResponse:
+        response = self.api.get(self._build_url(resource_id))
+        return HarpokratResponse.construct_from(response)
 
-    def read_all(self):
-        return self.api.get_many(self.uri)
+    def read_all(self) -> HarpokratResponse:
+        response = self.api.get_many(self.uri)
+        return HarpokratResponse.construct_from(response)
 
-    def create(self, attributes):
-        resource = Resource(attributes, self.resource_type)
+    def create(self, attributes, relationships=None) -> HarpokratResponse:
+        resource = Resource(attributes, self.resource_type, relationships)
         response = self.api.post(self.uri, data={'data': resource})
         return HarpokratResponse.construct_from(response)
 
-    def delete(self, resource_id):
-        return self.api.delete(self._build_url(resource_id))
+    def update(self) -> HarpokratResponse:
+        pass
+
+    def delete(self, resource_id) -> None:
+        self.api.delete(self._build_url(resource_id))

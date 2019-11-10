@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from typing import List, Union
+
 import six
 
 from HarpokratClientLibrary.models.Error import Error
@@ -15,3 +17,7 @@ class HarpokratResponse(HarpokratObject):
                 'jsonapi': JsonApi,
                 'errors': Error
             }))
+
+    data: Union[Resource, List[Resource]]
+    jsonapi: JsonApi
+    Error: List[Error]
