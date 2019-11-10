@@ -28,3 +28,6 @@ class PasswordService(SecretService):
 
     def create(self, password, relationships=None) -> HarpokratResponse:
         return super().create(secret_from_password(password), relationships)
+
+    def update(self, resource_id, password, relationships=None) -> HarpokratResponse:
+        return super().update(resource_id, secret_from_password(password))

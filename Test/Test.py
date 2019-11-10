@@ -31,4 +31,8 @@ print(response6)
 response7 = harpokrat_api.user_password_service.read_all()
 print(response7)
 
+pw2 = Password('aled2', 'oskour2', 'jpp2')
+response8 = harpokrat_api.user_password_service.update(pw_id, pw2)
+print(response8)
+
 harpokrat_api.password_service.delete(pw_id)

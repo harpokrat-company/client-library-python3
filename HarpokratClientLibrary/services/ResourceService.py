@@ -32,8 +32,10 @@ class ResourceService:
         response = self.api.post(self.uri, data={'data': resource})
         return HarpokratResponse.construct_from(response)
 
-    def update(self) -> HarpokratResponse:
-        pass
+    def update(self, resource_id, attributes, relationships=None) -> HarpokratResponse:
+        resource = Resource(attributes, self.resource_type, relationships)
+        response = self.api.patch(self._build_url(resource_id), data={'data': resource})
+        return HarpokratResponse.construct_from(response)
 
     def delete(self, resource_id) -> None:
         self.api.delete(self._build_url(resource_id))

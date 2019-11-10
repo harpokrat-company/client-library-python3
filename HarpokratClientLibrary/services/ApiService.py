@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+import json
+
 import requests
 from requests import Response
 
@@ -36,7 +38,7 @@ class ApiService:
 
     def patch(self, url, data=None, params=None, headers=None):
         headers = self._get_request_headers(headers)
-        response = requests.put(url, json=data, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
+        response = requests.patch(url, json=data, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
         response.raise_for_status()
         if response.status_code == 200:
             return response.json()
