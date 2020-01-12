@@ -7,11 +7,13 @@ from HarpokratClientLibrary.services.SecretService import SecretService
 from HarpokratClientLibrary.services.TokenService import TokenService
 from HarpokratClientLibrary.services.UserPasswordService import UserPasswordService
 from HarpokratClientLibrary.services.UserService import UserService
+from hclw.HCLW import HCLW
 
 
 class HarpokratAPI:
     def __init__(self, uri: str):
         self.uri = uri
+        self.wrapper = HCLW()
         self._init_services()
 
     def _init_services(self):
@@ -19,7 +21,7 @@ class HarpokratAPI:
         self.auth_service = AuthService()
         self.api_service = ApiService(self.auth_service)
 
-        self.token_service = TokenService(self.api_service, self.auth_service, self.uri)
+        self.token_service = TokenService(self.wrapper, self.api_service, self.auth_service, self.uri)
         self.user_service = UserService(self.api_service, self.uri)
         self.me_service = MeService(self.auth_service, self.user_service)
 
