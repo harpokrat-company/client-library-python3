@@ -2,6 +2,7 @@
 import base64
 import binascii
 import json
+from json import JSONDecodeError
 from typing import Union
 
 from HarpokratClientLibrary.models.domain.Password import Password
@@ -12,7 +13,7 @@ def password_from_secret(secret: Secret) -> Union[Password, None]:
     try:
         content = json.loads(base64.b64decode(secret.content.encode('utf-8')).decode('utf-8'))
         return Password.construct_from(content)
-    except binascii.Error:
+    except (binascii.Error, JSONDecodeError):
         return None
 
 
