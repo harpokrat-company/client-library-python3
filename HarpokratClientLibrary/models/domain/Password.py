@@ -3,12 +3,14 @@ from HarpokratClientLibrary.models.HarpokratObject import HarpokratObject
 
 
 class Password(HarpokratObject):
-    def __init__(self, login=None, password=None, domain=None):
+    def __init__(self, name=None, login=None, password=None, domain=None):
         super().__init__()
+        self.name = name
         self.login = login
         self.password = password
         self.domain = domain
 
+    name: str
     login: str
     password: str
     domain: str

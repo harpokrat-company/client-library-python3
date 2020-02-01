@@ -18,6 +18,8 @@ class HarpokratAPI:
 
     def _init_services(self):
         # TODO : refactor this
+        self.wrapper = HCLW()
+
         self.auth_service = AuthService()
         self.api_service = ApiService(self.auth_service)
 
@@ -25,6 +27,6 @@ class HarpokratAPI:
         self.user_service = UserService(self.api_service, self.uri)
         self.me_service = MeService(self.auth_service, self.user_service)
 
-        self.secret_service = SecretService(self.api_service, self.uri)
-        self.password_service = PasswordService(self.api_service, self.uri)
-        self.user_password_service = UserPasswordService(self.api_service, self.auth_service, self.uri)
+        self.secret_service = SecretService(self.api_service, self.uri, self.wrapper)
+        self.password_service = PasswordService(self.api_service, self.uri, self.wrapper)
+        self.user_password_service = UserPasswordService(self.api_service, self.auth_service, self.uri, self.wrapper)

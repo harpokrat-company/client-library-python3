@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from hclw.HCLW import HCLW
+
 from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
 from HarpokratClientLibrary.models.Relationship import Relationship
 from HarpokratClientLibrary.models.ResourceIdentifier import ResourceIdentifier
@@ -8,8 +10,8 @@ from HarpokratClientLibrary.services.PasswordService import PasswordService
 
 
 class UserPasswordService(PasswordService):
-    def __init__(self, api_service: ApiService, auth_service: AuthService, uri: str):
-        super().__init__(api_service, uri)
+    def __init__(self, api_service: ApiService, auth_service: AuthService, uri: str, wrapper: HCLW):
+        super().__init__(api_service, uri, wrapper)
         self.auth_service = auth_service
 
     def create(self, password, relationships=None) -> HarpokratResponse:
