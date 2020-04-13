@@ -5,21 +5,24 @@ from hclw.Secret import Secret
 from HarpokratClientLibrary.models import Resource
 from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
 from HarpokratClientLibrary.services import ApiService
+from HarpokratClientLibrary.services.AuthService import AuthService
 from HarpokratClientLibrary.services.ResourceService import ResourceService
 
 
 class SecretService(ResourceService):
-    def __init__(self, api_service: ApiService, uri: str, wrapper: HCLW):
+    def __init__(self, api_service: ApiService, auth_service: AuthService, uri: str, wrapper: HCLW):
         super().__init__(api_service, '{}/secrets'.format(uri), 'secrets')
         self.wrapper = wrapper
+        self.auth_service = auth_service
 
-    @staticmethod
-    def _secret_to_content(secret: Secret):
-        return {'content': secret.get_raw_content()}
+    def _secret_to_content(self, secret: Secret):
+        if self.auth_service.key is None:
+            raise
+        return {'content': secret.get_raw_content(self.auth_service.key)}
 
     def _convert_data(self, resource: Resource) -> Resource:
         if resource.attributes and hasattr(resource.attributes, 'content'):
-            secret = Secret(self.wrapper, resource.attributes['content'])
+            secret = Secret(self.wrapper, self.auth_service.key, resource.attributes['content'])
             resource.attributes = secret
         return resource
 

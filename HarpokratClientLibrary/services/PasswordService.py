@@ -8,12 +8,13 @@ from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
 from HarpokratClientLibrary.models.Resource import Resource
 from HarpokratClientLibrary.models.domain.Password import Password
 from HarpokratClientLibrary.services.ApiService import ApiService
+from HarpokratClientLibrary.services.AuthService import AuthService
 from HarpokratClientLibrary.services.SecretService import SecretService
 
 
 class PasswordService(SecretService):
-    def __init__(self, api_service: ApiService, uri: str, wrapper: HCLW):
-        super().__init__(api_service, uri, wrapper)
+    def __init__(self, api_service: ApiService, auth_service: AuthService, uri: str, wrapper: HCLW):
+        super().__init__(api_service, auth_service, uri, wrapper)
 
     def _password_to_secret(self, password: Password) -> Secret:
         secret = Secret(self.wrapper, "")

@@ -7,10 +7,10 @@ from HarpokratClientLibrary.models.domain.User import User
 
 harpokrat_api = HarpokratAPI('https://api.harpokrat.com/v1')
 
-test_user = User('aled.oskour2@gmail.com', 'aledoskour1234', 'jpp', 'flantier')
+test_user = User('aurevoir@gmail.com', 'jppaledoskour', 'jpp', 'flantier')
 
-# response1 = harpokrat_api.user_service.create(test_user)
-# print(response1)
+response1 = harpokrat_api.user_service.create(test_user)
+print(response1)
 
 response2 = harpokrat_api.token_service.login(test_user.email, test_user.password)
 print(response2)

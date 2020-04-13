@@ -24,9 +24,9 @@ class HarpokratAPI:
         self.api_service = ApiService(self.auth_service)
 
         self.token_service = TokenService(self.wrapper, self.api_service, self.auth_service, self.uri)
-        self.user_service = UserService(self.api_service, self.uri)
+        self.user_service = UserService(self.wrapper, self.api_service, self.uri)
         self.me_service = MeService(self.auth_service, self.user_service)
 
-        self.secret_service = SecretService(self.api_service, self.uri, self.wrapper)
-        self.password_service = PasswordService(self.api_service, self.uri, self.wrapper)
+        self.secret_service = SecretService(self.api_service, self.auth_service, self.uri, self.wrapper)
+        self.password_service = PasswordService(self.api_service, self.auth_service, self.uri, self.wrapper)
         self.user_password_service = UserPasswordService(self.api_service, self.auth_service, self.uri, self.wrapper)

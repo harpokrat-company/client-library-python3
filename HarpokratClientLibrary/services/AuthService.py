@@ -4,3 +4,4 @@
 class AuthService:
     token: str = None
     user_id = None
+    key = None

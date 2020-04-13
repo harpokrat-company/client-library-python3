@@ -11,8 +11,7 @@ from HarpokratClientLibrary.services.PasswordService import PasswordService
 
 class UserPasswordService(PasswordService):
     def __init__(self, api_service: ApiService, auth_service: AuthService, uri: str, wrapper: HCLW):
-        super().__init__(api_service, uri, wrapper)
-        self.auth_service = auth_service
+        super().__init__(api_service, auth_service, uri, wrapper)
 
     def create(self, password, relationships=None) -> HarpokratResponse:
         if relationships is None:

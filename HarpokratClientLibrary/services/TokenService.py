@@ -2,16 +2,18 @@
 import base64
 
 from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
+from HarpokratClientLibrary.models.domain.User import User
 from HarpokratClientLibrary.services.ApiService import ApiService
 from HarpokratClientLibrary.services.AuthService import AuthService
 from HarpokratClientLibrary.services.ResourceService import ResourceService
 from hclw.HCLW import HCLW
 
 
-class TokenService(ResourceService):
+class TokenService:
     def __init__(self, wrapper: HCLW, api_service: ApiService, auth_service: AuthService, uri: str):
-        super().__init__(api_service, '{}/json-web-tokens'.format(uri), 'tokens')
-        self.auth_service = auth_service
+        self.uri = '{}/json-web-tokens'.format(uri)
+        self.api = api_service
+        self.auth = auth_service
         self.wrapper = wrapper
 
     def login(self, email: str, password: str) -> HarpokratResponse:
@@ -20,6 +22,7 @@ class TokenService(ResourceService):
         }
         response = self.api.post(self.uri, headers=header)
         harpokrat_response = HarpokratResponse.construct_from(response)
-        self.auth_service.token = harpokrat_response.data.attributes.token
-        self.auth_service.user_id = harpokrat_response.data.relationships['user'].data.id
+        self.auth.token = harpokrat_response.data.attributes.token
+        self.auth.user_id = harpokrat_response.data.relationships['user'].data.id
+        self.auth.key = password  # TODO : remove this
         return harpokrat_response
