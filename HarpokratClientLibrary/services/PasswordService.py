@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-import json
 
 from hclw.HCLW import HCLW
 from hclw.Secret import Secret
@@ -45,4 +44,4 @@ class PasswordService(SecretService):
         return super().create(self._password_to_secret(password), relationships)
 
     def update(self, resource_id, password, relationships=None) -> HarpokratResponse:
-        return super().update(resource_id, Secret(self.wrapper, json.dumps(password)))
+        return super().update(resource_id, self._password_to_secret(password))
