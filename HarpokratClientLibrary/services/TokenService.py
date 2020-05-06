@@ -2,10 +2,8 @@
 import base64
 
 from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
-from HarpokratClientLibrary.models.domain.User import User
 from HarpokratClientLibrary.services.ApiService import ApiService
 from HarpokratClientLibrary.services.AuthService import AuthService
-from HarpokratClientLibrary.services.ResourceService import ResourceService
 from hclw.HCLW import HCLW
 
 

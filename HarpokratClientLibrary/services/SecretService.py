@@ -34,8 +34,13 @@ class SecretService(ResourceService):
         response.data = SecretService._convert_data(self, response.data)
         return response
 
+    # TODO : temporary fix find a better wayy
+    def filter_resource(self, resources):
+        return filter(lambda x: x.relationships["owner"].data.id == self.auth_service.user_id, resources)
+
     def read_all(self) -> HarpokratResponse:
         response = super().read_all()
+        response.data = self.filter_resource(response.data)
         response.data = [SecretService._convert_data(self, data) for data in response.data]
         return response
 
