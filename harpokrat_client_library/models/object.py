@@ -29,8 +29,7 @@ def convert_to_harpokrat_object(name, data, types=None, plural_dicts_types=None)
 class HarpokratObject(dict):
     def __setattr__(self, name, value):
         if name[0] == '_' or name in self.__dict__:
-            return super(HarpokratObject, self).__setattr__(name, value)
-
+            super().__setattr__(name, value)
         self[name] = value
 
     def __getattr__(self, name):
@@ -38,13 +37,12 @@ class HarpokratObject(dict):
 
     def __delattr__(self, name):
         if name[0] == '_':
-            return super(HarpokratObject, self).__delattr__(name)
-
+            super().__delattr__(name)
         del self[name]
 
     def __setitem__(self, key, value):
         key = key.lstrip('_')
-        super(HarpokratObject, self).__setitem__(key, value)
+        super().__setitem__(key, value)
 
     @classmethod
     def construct_from(cls, values):
@@ -55,4 +53,3 @@ class HarpokratObject(dict):
     def refresh_from(self, values):
         for key, value in six.iteritems(values.copy()):
             self.__setitem__(key, convert_to_harpokrat_object(key, value))
-

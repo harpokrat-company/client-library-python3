@@ -2,15 +2,15 @@
 from hclw.HCLW import HCLW
 from hclw.Secret import Secret
 
-from harpokrat_client_library.models import resource
+from harpokrat_client_library.models.resource import Resource
 from harpokrat_client_library.models.response import HarpokratResponse
-from harpokrat_client_library.services import api_service
+from harpokrat_client_library.services.api_service import ApiService
 from harpokrat_client_library.services.auth_service import AuthService
 from harpokrat_client_library.services.resource_service import ResourceService
 
 
 class SecretService(ResourceService):
-    def __init__(self, api_service: api_service, auth_service: AuthService, uri: str, wrapper: HCLW):
+    def __init__(self, api_service: ApiService, auth_service: AuthService, uri: str, wrapper: HCLW):
         super().__init__(api_service, '{}/secrets'.format(uri), 'secrets')
         self.wrapper = wrapper
         self.auth_service = auth_service
@@ -20,13 +20,13 @@ class SecretService(ResourceService):
             raise
         return {'content': secret.get_raw_content(self.auth_service.key)}
 
-    def _convert_data(self, resource: resource) -> resource:
-        if resource.attributes and hasattr(resource.attributes, 'content'):
-            secret = Secret(self.wrapper, self.auth_service.key, resource.attributes['content'])
-            resource.attributes = secret
-        return resource
+    def _convert_data(self, data: Resource) -> Resource:
+        if data.attributes and hasattr(data.attributes, 'content'):
+            secret = Secret(self.wrapper, self.auth_service.key, data.attributes['content'])
+            data.attributes = secret
+        return data
 
-    def create(self, attributes: Secret, relationships=None) -> HarpokratResponse:
+    def create(self, attributes, relationships=None) -> HarpokratResponse:
         return super().create(self._secret_to_content(attributes), relationships)
 
     def read(self, resource_id: str) -> HarpokratResponse:
@@ -46,4 +46,3 @@ class SecretService(ResourceService):
 
     def update(self, resource_id, attributes, relationships=None) -> HarpokratResponse:
         return super().update(resource_id, self._secret_to_content(attributes), relationships)
-

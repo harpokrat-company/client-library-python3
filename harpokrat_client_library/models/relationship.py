@@ -25,4 +25,3 @@ class Relationship(HarpokratObject):
     data: ResourceIdentifier
     meta: str
     links: Dict[str, Link]
-

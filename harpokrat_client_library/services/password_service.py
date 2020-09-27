@@ -1,20 +1,13 @@
 #!/usr/bin/env python3
-
-from hclw.HCLW import HCLW
 from hclw.Secret import Secret
 
-from harpokrat_client_library.models.response import HarpokratResponse
-from harpokrat_client_library.models.resource import Resource
 from harpokrat_client_library.models.domain.password import Password
-from harpokrat_client_library.services.api_service import ApiService
-from harpokrat_client_library.services.auth_service import AuthService
+from harpokrat_client_library.models.resource import Resource
+from harpokrat_client_library.models.response import HarpokratResponse
 from harpokrat_client_library.services.secret_service import SecretService
 
 
 class PasswordService(SecretService):
-    def __init__(self, api_service: ApiService, auth_service: AuthService, uri: str, wrapper: HCLW):
-        super().__init__(api_service, auth_service, uri, wrapper)
-
     def _password_to_secret(self, password: Password) -> Secret:
         secret = Secret(self.wrapper, "")
         secret.name = password.name
@@ -40,8 +33,8 @@ class PasswordService(SecretService):
         response.data = [PasswordService._convert_data(self, data) for data in response.data]
         return response
 
-    def create(self, password, relationships=None) -> HarpokratResponse:
-        return super().create(self._password_to_secret(password), relationships)
+    def create(self, attributes, relationships=None) -> HarpokratResponse:
+        return super().create(self._password_to_secret(attributes), relationships)
 
-    def update(self, resource_id, password, relationships=None) -> HarpokratResponse:
-        return super().update(resource_id, self._password_to_secret(password))
+    def update(self, resource_id, attributes, relationships=None) -> HarpokratResponse:
+        return super().update(resource_id, self._password_to_secret(attributes))

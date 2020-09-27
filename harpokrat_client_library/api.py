@@ -1,4 +1,6 @@
 #!/usr/bin/env python3
+from hclw.HCLW import HCLW
+
 from harpokrat_client_library.services.api_service import ApiService
 from harpokrat_client_library.services.auth_service import AuthService
 from harpokrat_client_library.services.me_service import MeService
@@ -7,7 +9,6 @@ from harpokrat_client_library.services.secret_service import SecretService
 from harpokrat_client_library.services.token_service import TokenService
 from harpokrat_client_library.services.user_password_service import UserPasswordService
 from harpokrat_client_library.services.user_service import UserService
-from hclw.HCLW import HCLW
 
 
 class HarpokratAPI:

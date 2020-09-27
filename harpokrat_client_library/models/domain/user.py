@@ -8,5 +8,5 @@ class User(HarpokratObject):
         super().__init__()
         self.email = email
         self.password = password
-        self.firstName = first_name
-        self.lastName = last_name
+        self.first_name = first_name
+        self.last_name = last_name

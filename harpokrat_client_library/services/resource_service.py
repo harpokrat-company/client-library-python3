@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 
-from harpokrat_client_library.models.response import HarpokratResponse
 from harpokrat_client_library.models.resource import Resource
-from harpokrat_client_library.services import api_service
+from harpokrat_client_library.models.response import HarpokratResponse
+from harpokrat_client_library.services.api_service import ApiService
 
 
 class ResourceService:
-    def __init__(self, api_service: api_service, uri: str, resource_type: str = None):
+    def __init__(self, api_service: ApiService, uri: str, resource_type: str = None):
         self.api = api_service
         self.uri = uri
         self.resource_type = resource_type

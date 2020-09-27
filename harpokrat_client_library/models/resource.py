@@ -32,4 +32,3 @@ class Resource(ResourceIdentifier):
 
     attributes: object
     relationships: Dict
-
