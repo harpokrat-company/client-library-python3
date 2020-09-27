@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
 from hclw.HCLW import HCLW
 
-from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
-from HarpokratClientLibrary.models.Relationship import Relationship
-from HarpokratClientLibrary.models.ResourceIdentifier import ResourceIdentifier
-from HarpokratClientLibrary.services.ApiService import ApiService
-from HarpokratClientLibrary.services.AuthService import AuthService
-from HarpokratClientLibrary.services.PasswordService import PasswordService
+from harpokrat_client_library.models.response import HarpokratResponse
+from harpokrat_client_library.models.relationship import Relationship
+from harpokrat_client_library.models.resource_identifier import ResourceIdentifier
+from harpokrat_client_library.services.api_service import ApiService
+from harpokrat_client_library.services.auth_service import AuthService
+from harpokrat_client_library.services.password_service import PasswordService
 
 
 class UserPasswordService(PasswordService):

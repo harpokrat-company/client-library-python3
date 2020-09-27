@@ -1,9 +1,9 @@
 #!/usr/bin/env python3
 import base64
 
-from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
-from HarpokratClientLibrary.services.ApiService import ApiService
-from HarpokratClientLibrary.services.AuthService import AuthService
+from harpokrat_client_library.models.response import HarpokratResponse
+from harpokrat_client_library.services.api_service import ApiService
+from harpokrat_client_library.services.auth_service import AuthService
 from hclw.HCLW import HCLW
 
 

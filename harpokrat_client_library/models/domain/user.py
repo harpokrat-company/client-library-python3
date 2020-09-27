@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 
-from HarpokratClientLibrary.models.HarpokratObject import HarpokratObject
+from harpokrat_client_library.models.object import HarpokratObject
 
 
 class User(HarpokratObject):

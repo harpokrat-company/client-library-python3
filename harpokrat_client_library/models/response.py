@@ -3,10 +3,10 @@ from typing import List, Union
 
 import six
 
-from HarpokratClientLibrary.models.Error import Error
-from HarpokratClientLibrary.models.HarpokratObject import HarpokratObject, convert_to_harpokrat_object
-from HarpokratClientLibrary.models.JsonApi import JsonApi
-from HarpokratClientLibrary.models.Resource import Resource
+from harpokrat_client_library.models.error import Error
+from harpokrat_client_library.models.object import HarpokratObject, convert_to_harpokrat_object
+from harpokrat_client_library.models.json_api import JsonApi
+from harpokrat_client_library.models.resource import Resource
 
 
 class HarpokratResponse(HarpokratObject):

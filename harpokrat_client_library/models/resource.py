@@ -3,12 +3,12 @@ from typing import Dict
 
 import six
 
-from HarpokratClientLibrary.models.HarpokratObject import convert_to_harpokrat_object
-from HarpokratClientLibrary.models.Relationship import Relationship
-from HarpokratClientLibrary.models.ResourceIdentifier import ResourceIdentifier
-from HarpokratClientLibrary.models.domain.JsonWebToken import JsonWebToken
-from HarpokratClientLibrary.models.domain.Secret import Secret
-from HarpokratClientLibrary.models.domain.User import User
+from harpokrat_client_library.models.object import convert_to_harpokrat_object
+from harpokrat_client_library.models.relationship import Relationship
+from harpokrat_client_library.models.resource_identifier import ResourceIdentifier
+from harpokrat_client_library.models.domain.json_web_token import JsonWebToken
+from harpokrat_client_library.models.domain.secret import Secret
+from harpokrat_client_library.models.domain.user import User
 
 
 class Resource(ResourceIdentifier):

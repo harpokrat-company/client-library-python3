@@ -3,9 +3,9 @@ from typing import Dict
 
 import six
 
-from HarpokratClientLibrary.models.HarpokratObject import HarpokratObject, convert_to_harpokrat_object
-from HarpokratClientLibrary.models.Link import Link
-from HarpokratClientLibrary.models.ResourceIdentifier import ResourceIdentifier
+from harpokrat_client_library.models.object import HarpokratObject, convert_to_harpokrat_object
+from harpokrat_client_library.models.link import Link
+from harpokrat_client_library.models.resource_identifier import ResourceIdentifier
 
 
 class Relationship(HarpokratObject):

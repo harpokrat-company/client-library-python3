@@ -1,6 +1,4 @@
 #!/usr/bin/env python3
-import json
-
 import requests
 from requests import Response
 

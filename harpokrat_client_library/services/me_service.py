@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
-from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
-from HarpokratClientLibrary.services.AuthService import AuthService
-from HarpokratClientLibrary.services.UserService import UserService
+from harpokrat_client_library.models.response import HarpokratResponse
+from harpokrat_client_library.services.auth_service import AuthService
+from harpokrat_client_library.services.user_service import UserService
 
 
 class MeService:

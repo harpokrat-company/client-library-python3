@@ -5,8 +5,8 @@ import json
 from json import JSONDecodeError
 from typing import Union
 
-from HarpokratClientLibrary.models.domain.Password import Password
-from HarpokratClientLibrary.models.domain.Secret import Secret
+from harpokrat_client_library.models.domain.password import Password
+from harpokrat_client_library.models.domain.secret import Secret
 
 
 def password_from_secret(secret: Secret) -> Union[Password, None]:

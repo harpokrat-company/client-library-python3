@@ -3,12 +3,12 @@
 from hclw.HCLW import HCLW
 from hclw.Secret import Secret
 
-from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
-from HarpokratClientLibrary.models.Resource import Resource
-from HarpokratClientLibrary.models.domain.Password import Password
-from HarpokratClientLibrary.services.ApiService import ApiService
-from HarpokratClientLibrary.services.AuthService import AuthService
-from HarpokratClientLibrary.services.SecretService import SecretService
+from harpokrat_client_library.models.response import HarpokratResponse
+from harpokrat_client_library.models.resource import Resource
+from harpokrat_client_library.models.domain.password import Password
+from harpokrat_client_library.services.api_service import ApiService
+from harpokrat_client_library.services.auth_service import AuthService
+from harpokrat_client_library.services.secret_service import SecretService
 
 
 class PasswordService(SecretService):

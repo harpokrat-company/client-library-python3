@@ -1,14 +1,14 @@
 #!/usr/bin/env python3
 from hclw.HCLW import HCLW
 
-from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
-from HarpokratClientLibrary.models.domain.User import User
-from HarpokratClientLibrary.services import ApiService
-from HarpokratClientLibrary.services.ResourceService import ResourceService
+from harpokrat_client_library.models.response import HarpokratResponse
+from harpokrat_client_library.models.domain.user import User
+from harpokrat_client_library.services import api_service
+from harpokrat_client_library.services.resource_service import ResourceService
 
 
 class UserService(ResourceService):
-    def __init__(self, wrapper: HCLW, api_service: ApiService, uri: str):
+    def __init__(self, wrapper: HCLW, api_service: api_service, uri: str):
         super().__init__(api_service, '{}/{}'.format(uri, 'users'), 'users')
         self.wrapper = wrapper
 
