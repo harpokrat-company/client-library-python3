@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-from harpokrat_client_library.models.object import HarpokratObject
 
 
-class Secret(HarpokratObject):
-    def __init__(self, content: str = None):
-        super().__init__()
-        self.content = content
+class Secret(dict):
+    def __init__(self, content: str, private: bool = True):
+        super().__init__({
+            'content': content,
+            'private': private,
+        })

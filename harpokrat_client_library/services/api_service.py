@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
+
 import requests
-from requests import Response
 
 DEFAULT_TIMEOUT = 10
 
@@ -25,7 +25,7 @@ class ApiService:
             return None
         return response.json()
 
-    def get_many(self, url, params=None, headers=None) -> [Response]:
+    def get_many(self, url, params=None, headers=None):
         return self.get(url, params=params, headers=headers)
 
     def post(self, url, data=None, params=None, headers=None):

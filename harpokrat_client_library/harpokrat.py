@@ -11,7 +11,7 @@ from harpokrat_client_library.services.user_password_service import UserPassword
 from harpokrat_client_library.services.user_service import UserService
 
 
-class HarpokratAPI:
+class Harpokrat:
     def __init__(self, uri: str):
         self.uri = uri
         self.wrapper = HCLW()

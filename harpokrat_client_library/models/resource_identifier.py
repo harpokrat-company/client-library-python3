@@ -1,15 +1,10 @@
 #!/usr/bin/env python3
 
-from harpokrat_client_library.models.object import HarpokratObject
 
-
-class ResourceIdentifier(HarpokratObject):
-    def __init__(self, type=None, id=None, meta=None):
-        super().__init__()
-        self.type = type
-        self.id = id
-        self.meta = meta
-
-    type: str
-    id: str
-    meta: str
+class ResourceIdentifier(dict):
+    def __init__(self, type: str, id: str = None, meta=None):
+        super().__init__({
+            'type': type,
+            'id': id,
+            'meta': meta
+        })
