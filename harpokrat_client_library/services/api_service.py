@@ -1,5 +1,4 @@
 #!/usr/bin/env python3
-
 import requests
 
 DEFAULT_TIMEOUT = 10

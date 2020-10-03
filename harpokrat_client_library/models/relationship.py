@@ -4,8 +4,9 @@ from harpokrat_client_library.models.resource_identifier import ResourceIdentifi
 
 
 class Relationship(dict):
-    def __init__(self, data: ResourceIdentifier = None, meta: str = None):
+    def __init__(self, data: ResourceIdentifier = None, meta: str = None, links = None):
         super().__init__({
             'data': data,
-            'meta': meta
+            'meta': meta,
+            'links': links,
         })

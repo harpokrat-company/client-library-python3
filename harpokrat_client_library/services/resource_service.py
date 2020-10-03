@@ -17,15 +17,15 @@ class ResourceService:
             url = url[1:]
         return url + '/' + path
 
-    def read(self, resource_id: str) -> dict:
+    def read(self, resource_id: str):
         response = self.api.get(self._build_url(resource_id))
         return response
 
-    def read_all(self) -> dict:
+    def read_all(self):
         response = self.api.get_many(self.uri)
         return response
 
-    def create(self, attributes, relationships=None) -> dict:
+    def create(self, attributes, relationships=None):
         resource = {
             'attributes': attributes,
             'type': self.resource_type,
@@ -34,7 +34,7 @@ class ResourceService:
         response = self.api.post(self.uri, data={'data': resource})
         return response
 
-    def update(self, resource_id, attributes, relationships=None) -> dict:
+    def update(self, resource_id, attributes, relationships=None):
         resource = {
             'attributes': attributes,
             'type': self.resource_type,
@@ -44,6 +44,6 @@ class ResourceService:
         response = self.api.patch(self._build_url(resource_id), data={'data': resource})
         return response
 
-    def delete(self, resource_id) -> dict:
+    def delete(self, resource_id):
         response = self.api.delete(self._build_url(resource_id))
         return response
