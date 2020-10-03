@@ -4,42 +4,37 @@ from harpokrat_client_library.harpokrat import Harpokrat
 from harpokrat_client_library.models.domain.password import Password
 from harpokrat_client_library.models.domain.user import User
 
-harpokrat_api = Harpokrat('https://api.dev.harpokrat.com:443/v1')
+hpk = Harpokrat('https://api.dev.harpokrat.com:443/v1')
 
 test_user = User('pythonlib@osko.ur', 'testtest', 'jpp', 'flantier')
 
-# print('-> Create User')
-# response1 = harpokrat_api.user_service.create(test_user)
-# print(response1)
-
 print('-> Login')
-response2 = harpokrat_api.token_service.login(test_user['email'], test_user['password'])
-print(response2)
+response = hpk.token_endpoint.login(test_user['email'], test_user['password'])
+print(response)
 
 print('-> Get User')
-response3 = harpokrat_api.me_service.me()
-print(response3)
+response = hpk.me_service.read()
+print(response)
 
 print('-> Create password')
 pw = Password('flantier', 'aled', 'oskour', 'jpp', private=False)
-response4 = harpokrat_api.user_password_service.create(pw)
-print(response4)
-
-pw_id = response4['data']['id']
+response = hpk.password_service.create(pw)
+pw_id = response['data']['id']
+print(response)
 
 print('-> Get password')
-response5 = harpokrat_api.user_password_service.read(pw_id)
-print(response5)
+response = hpk.password_service.read(pw_id)
+print(response)
 
 print('-> Get all passwords')
-response7 = harpokrat_api.user_password_service.read_all()
-print(response7)
+response = hpk.password_service.read_all()
+print(response)
 
 print('-> Update a password')
 pw2 = Password('flantier2', 'aled2', 'oskour2', 'jpp2')
-response8 = harpokrat_api.user_password_service.update(pw_id, pw2)
-print(response8)
+response = hpk.password_service.update(pw_id, pw2)
+print(response)
 
 print('-> Delete password')
-response9 = harpokrat_api.password_service.delete(pw_id)
-print(response9)
+response = hpk.password_service.delete(pw_id)
+print(response)

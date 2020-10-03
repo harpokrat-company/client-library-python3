@@ -1,15 +1,15 @@
 #!/usr/bin/env python3
 from hclw.HCLW import HCLW
 
-from harpokrat_client_library.services.api_service import ApiService
-from harpokrat_client_library.services.auth_service import AuthService
+from harpokrat_client_library.api import Api
+from harpokrat_client_library.authentication import Authentication
 
 
-class TokenService:
-    def __init__(self, wrapper: HCLW, api_service: ApiService, auth_service: AuthService, uri: str):
+class TokenEndpoint:
+    def __init__(self, wrapper: HCLW, api: Api, auth: Authentication, uri: str):
         self.uri = '{}/json-web-tokens'.format(uri)
-        self.api = api_service
-        self.auth = auth_service
+        self.api = api
+        self.auth = auth
         self.wrapper = wrapper
 
     def login(self, email: str, password: str):
