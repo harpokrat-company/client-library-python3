@@ -1,7 +1,6 @@
 #!/usr/bin/env python3
-from HarpokratClientLibrary.models.HarpokratResponse import HarpokratResponse
-from HarpokratClientLibrary.services.AuthService import AuthService
-from HarpokratClientLibrary.services.UserService import UserService
+from harpokrat_client_library.services.auth_service import AuthService
+from harpokrat_client_library.services.user_service import UserService
 
 
 class MeService:
@@ -9,7 +8,7 @@ class MeService:
         self.auth_service = auth_service
         self.user_service = user_service
 
-    def me(self) -> HarpokratResponse:
+    def me(self):
         if self.auth_service.user_id is None:
             raise
         return self.user_service.read(self.auth_service.user_id)

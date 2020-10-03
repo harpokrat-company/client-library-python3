@@ -1,16 +1,17 @@
 #!/usr/bin/env python3
-from HarpokratClientLibrary.services.ApiService import ApiService
-from HarpokratClientLibrary.services.AuthService import AuthService
-from HarpokratClientLibrary.services.MeService import MeService
-from HarpokratClientLibrary.services.PasswordService import PasswordService
-from HarpokratClientLibrary.services.SecretService import SecretService
-from HarpokratClientLibrary.services.TokenService import TokenService
-from HarpokratClientLibrary.services.UserPasswordService import UserPasswordService
-from HarpokratClientLibrary.services.UserService import UserService
 from hclw.HCLW import HCLW
 
+from harpokrat_client_library.services.api_service import ApiService
+from harpokrat_client_library.services.auth_service import AuthService
+from harpokrat_client_library.services.me_service import MeService
+from harpokrat_client_library.services.password_service import PasswordService
+from harpokrat_client_library.services.secret_service import SecretService
+from harpokrat_client_library.services.token_service import TokenService
+from harpokrat_client_library.services.user_password_service import UserPasswordService
+from harpokrat_client_library.services.user_service import UserService
 
-class HarpokratAPI:
+
+class Harpokrat:
     def __init__(self, uri: str):
         self.uri = uri
         self.wrapper = HCLW()
