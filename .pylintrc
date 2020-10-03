@@ -1,7 +1,8 @@
 [MASTER]
 
 disable=
-    C0114, C0115, C0116, line-too-long
+    C0114, C0115, C0116, line-too-long, import-error
+# TODO : hotfix to include HCLW and HCL in github CI
 
 # A comma-separated list of package or module names from where C extensions may
 # be loaded. Extensions are loading into the active Python interpreter and may
