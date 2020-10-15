@@ -11,6 +11,16 @@ jobs:
               uses: actions/setup-python@v1
               with:
                   python-version: 3.8
+            - name: Get HCL
+              uses: actions/checkout@master
+              with:
+                  repository: harpokrat-company/hcl
+                  token: ${{ secrets.GITHUB_TOKEN }}
+            - name: Get HCLW
+              uses: actions/checkout@master
+              with:
+                  repository: harpokrat-company/hclw-python3
+                  token: ${{ secrets.GITHUB_TOKEN }}
             - name: Install dependencies
               run: |
                   chmod +x ./install_hclw.sh
