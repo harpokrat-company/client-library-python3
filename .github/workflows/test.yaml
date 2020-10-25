@@ -17,6 +17,7 @@ jobs:
                   repository: harpokrat-company/hcl
                   path: .hcl
                   ref: master
+                  token: ${{ secrets.HARPOKRAT_TOKEN }}
             - name: Setup HCL
               run: |
                   cd .hcl
@@ -31,6 +32,7 @@ jobs:
                   repository: harpokrat-company/hclw-python3
                   path: .hclw
                   ref: master
+                  token: ${{ secrets.HARPOKRAT_TOKEN }}
             - name: Setup HCLW
               run: |
                   python3 -m pip install .hclw
