@@ -12,12 +12,11 @@ jobs:
               with:
                   python-version: 3.8
             - name: Get HCL
-              uses: actions/checkout@master
+              uses: actions/checkout@v2
               with:
                   repository: harpokrat-company/hcl
                   path: .hcl
                   ref: master
-                  token: ${{ secrets.GITHUB_TOKEN }}
             - name: Setup HCL
               run: |
                   cd .hcl
@@ -27,12 +26,11 @@ jobs:
                   sudo ldconfig
                   cd ..
             - name: Get HCLW
-              uses: actions/checkout@master
+              uses: actions/checkout@v2
               with:
                   repository: harpokrat-company/hclw-python3
                   path: .hclw
                   ref: master
-                  token: ${{ secrets.GITHUB_TOKEN }}
             - name: Setup HCLW
               run: |
                   python3 -m pip install .hclw
