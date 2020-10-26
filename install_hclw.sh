@@ -1,5 +1,6 @@
 git clone git@github.com:harpokrat-company/hcl.git
 cd hcl
+git checkout v0.0.0
 cmake .
 make
 sudo cp libhcl.so /usr/lib/libhcl.so.0
