@@ -4,7 +4,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='harpokrat_client_library',
-    version='0.0.1',
+    version='0.0.2',
     license=license,
     packages=find_packages(exclude=('tests', 'docs')),
     python_requires='>=3.4',
