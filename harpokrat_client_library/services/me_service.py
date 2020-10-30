@@ -1,14 +1,24 @@
 #!/usr/bin/env python3
-from harpokrat_client_library.services.auth_service import AuthService
-from harpokrat_client_library.services.user_service import UserService
+from harpokrat_client_library.authentication import Authentication
+from harpokrat_client_library.endpoint.user_endpoint import UserEndpoint
 
 
 class MeService:
-    def __init__(self, auth_service: AuthService, user_service: UserService):
-        self.auth_service = auth_service
-        self.user_service = user_service
+    def __init__(self, auth: Authentication, user_endpoint: UserEndpoint):
+        self.auth = auth
+        self.user_endpoint = user_endpoint
 
-    def me(self):
-        if self.auth_service.user_id is None:
-            raise
-        return self.user_service.read(self.auth_service.user_id)
+    def resource(self, resource_name: str):
+        if self.auth.user_id is None:
+            raise Exception('no user authenticated')
+        return self.user_endpoint.resource(self.auth.user_id, resource_name)
+
+    def relationship(self, resource_name: str):
+        if self.auth.user_id is None:
+            raise Exception('no user authenticated')
+        return self.user_endpoint.relationship(self.auth.user_id, resource_name)
+
+    def read(self):
+        if self.auth.user_id is None:
+            raise Exception('no user authenticated')
+        return self.user_endpoint.read(self.auth.user_id)

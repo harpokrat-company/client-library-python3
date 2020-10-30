@@ -3,7 +3,7 @@ from dataclasses import dataclass
 
 
 @dataclass
-class AuthService:
+class Authentication:
     token: str = None
     user_id = None
     key = None

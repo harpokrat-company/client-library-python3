@@ -4,14 +4,14 @@ import requests
 DEFAULT_TIMEOUT = 10
 
 
-class ApiService:
-    def __init__(self, auth_service):
-        self.auth_service = auth_service
+class Api:
+    def __init__(self, auth):
+        self.auth = auth
 
     def _get_request_headers(self, headers):
         if headers is None:
             headers = {}
-        token = self.auth_service.token
+        token = self.auth.token
         if token:
             headers['Authorization'] = 'Bearer {}'.format(token)
         return headers
