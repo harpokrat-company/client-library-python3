@@ -30,7 +30,7 @@ class PasswordService:
         return response
 
     def read_all(self):
-        response = self.user_endpoint.resource(self.auth.user_id, 'secrets').read_all()
+        response = self.user_endpoint.resource(self.auth.user_id, 'secrets').read()
         for secret in response['data']:
             secret['attributes'] = self._convert_to_password(secret['attributes'])
         return response

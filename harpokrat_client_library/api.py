@@ -51,9 +51,9 @@ class Api:
             return None
         return response.json()
 
-    def delete(self, url, params=None, headers=None):
+    def delete(self, url, data=None, params=None, headers=None):
         headers = self._get_request_headers(headers)
-        response = requests.delete(url, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
+        response = requests.delete(url, json=data, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
         response.raise_for_status()
         if response.status_code != 200:
             return None

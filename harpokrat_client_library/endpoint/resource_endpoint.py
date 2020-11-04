@@ -1,6 +1,8 @@
 #!/usr/bin/env python3
 
 from harpokrat_client_library.api import Api
+from harpokrat_client_library.endpoint.relationship_endpoint import RelationshipEndpoint
+from harpokrat_client_library.endpoint.relationship_resource_endpoint import RelationshipResourceEndpoint
 
 
 class ResourceEndpoint:
@@ -12,16 +14,16 @@ class ResourceEndpoint:
     def _resolve_path(self, *args: [str]):
         return '/'.join([self.uri, *args])
 
-    def resource(self, id: str, resource_name: str):
-        return ResourceEndpoint(
+    def resource(self, resource_id: str, resource_name: str) -> RelationshipResourceEndpoint:
+        return RelationshipResourceEndpoint(
             self.api,
-            self._resolve_path(id, resource_name)
+            self._resolve_path(resource_id, resource_name)
         )
 
-    def relationship(self, id: str, resource_name: str):
-        return ResourceEndpoint(
+    def relationship(self, resource_id: str, resource_name: str) -> RelationshipEndpoint:
+        return RelationshipEndpoint(
             self.api,
-            self._resolve_path(id, 'relationships', resource_name)
+            self._resolve_path(resource_id, 'relationships', resource_name)
         )
 
     def read(self, resource_id: str):
