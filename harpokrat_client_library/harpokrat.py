@@ -3,6 +3,9 @@ from hclw.HCLW import HCLW
 
 from harpokrat_client_library.api import Api
 from harpokrat_client_library.authentication import Authentication
+from harpokrat_client_library.endpoint.group_endpoirt import GroupEndpoint
+from harpokrat_client_library.endpoint.organization_endpoirt import OrganizationEndpoint
+from harpokrat_client_library.endpoint.vault_endpoirt import VaultEndpoint
 from harpokrat_client_library.services.me_service import MeService
 from harpokrat_client_library.services.password_service import PasswordService
 from harpokrat_client_library.endpoint.secret_endpoint import SecretEndpoint
@@ -26,6 +29,9 @@ class Harpokrat:
         self.token_endpoint = TokenEndpoint(self.wrapper, self.api, self.auth, self.uri)
         self.user_endpoint = UserEndpoint(self.api, self.uri)
         self.secret_endpoint = SecretEndpoint(self.api, self.uri)
+        self.organization_endpoint = OrganizationEndpoint(self.api, self.uri)
+        self.group_endpoint = GroupEndpoint(self.api, self.uri)
+        self.vault_endpoint = VaultEndpoint(self.api, self.uri)
 
         self.me_service = MeService(self.auth, self.user_endpoint)
         self.password_service = PasswordService(self.user_endpoint, self.secret_endpoint, self.wrapper, self.auth)
