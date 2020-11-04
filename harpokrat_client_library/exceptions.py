@@ -6,6 +6,7 @@ class HarpokratException(Exception):
 
 
 class HarpokratHttpException(HarpokratException):
-    def __init__(self, error, url):
+    def __init__(self, error, url, data=None):
         self.error = error
         self.url = url
+        self.data = data

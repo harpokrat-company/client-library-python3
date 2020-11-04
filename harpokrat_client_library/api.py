@@ -39,7 +39,7 @@ class Api:
             response = requests.post(url, json=data, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
             response.raise_for_status()
         except HTTPError as error:
-            raise HarpokratHttpException(error, url)
+            raise HarpokratHttpException(error, url, data)
         if response.status_code != 200:
             return None
         return response.json()
@@ -50,7 +50,7 @@ class Api:
             response = requests.patch(url, json=data, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
             response.raise_for_status()
         except HTTPError as error:
-            raise HarpokratHttpException(error, url)
+            raise HarpokratHttpException(error, url, data)
         if response.status_code != 200:
             return None
         return response.json()
@@ -61,7 +61,7 @@ class Api:
             response = requests.put(url, json=data, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
             response.raise_for_status()
         except HTTPError as error:
-            raise HarpokratHttpException(error, url)
+            raise HarpokratHttpException(error, url, data)
         if response.status_code != 200:
             return None
         return response.json()
@@ -69,10 +69,10 @@ class Api:
     def delete(self, url, data=None, params=None, headers=None):
         headers = self._get_request_headers(headers)
         try:
-            response = requests.delete(url, data=data, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
+            response = requests.delete(url, json=data, params=params, headers=headers, timeout=DEFAULT_TIMEOUT)
             response.raise_for_status()
         except HTTPError as error:
-            raise HarpokratHttpException(error, url)
+            raise HarpokratHttpException(error, url, data)
         if response.status_code != 200:
             return None
         return response.json()
