@@ -17,7 +17,7 @@ jobs:
                   repository: harpokrat-company/hcl
                   path: .hcl
                   ref: v0.0.1
-                  ssh: ${{ secrets.SSH_HCL }}
+                  ssh-key: ${{ secrets.SSH_HCL }}
             - name: Setup HCL
               run: |
                   cd .hcl
