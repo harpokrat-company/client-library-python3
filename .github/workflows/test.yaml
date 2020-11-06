@@ -32,7 +32,7 @@ jobs:
                   repository: harpokrat-company/hclw-python3
                   path: .hclw
                   ref: v0.0.1
-                  token: ${{ secrets.HARPOKRAT_TOKEN }}
+                  ssh-key: ${{ secrets.SSH_HCLW_PYTHON3 }}
             - name: Setup HCLW
               run: |
                   python3 -m pip install .hclw
